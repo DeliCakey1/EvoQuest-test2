@@ -10,6 +10,7 @@
   *{margin:0;padding:0;box-sizing:border-box;}
   body{background:var(--bg);font-family:'Rajdhani',sans-serif;color:var(--text);overflow:hidden;user-select:none;}
 
+  /* ── START SCREEN ── */
   #startScreen{
     position:fixed;inset:0;
     background:radial-gradient(ellipse at 50% 38%,#0d2a4a 0%,#05090f 68%);
@@ -23,36 +24,27 @@
     animation:titlePulse 2.5s ease-in-out infinite;margin-bottom:.22em;flex-shrink:0;
   }
   @keyframes titlePulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.4)}}
-  .sub{font-size:.88rem;color:#7ab0d0;letter-spacing:.3em;text-transform:uppercase;margin-bottom:.7rem;flex-shrink:0;}
+  .sub{font-size:.88rem;color:#7ab0d0;letter-spacing:.3em;text-transform:uppercase;margin-bottom:.5rem;flex-shrink:0;}
 
-  .name-row{display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;flex-shrink:0;}
-  .name-row label{font-family:'Orbitron',monospace;font-size:.58rem;letter-spacing:.15em;color:var(--accent);}
-  #playerNameInput{
-    background:rgba(0,255,204,.07);border:1px solid rgba(0,255,204,.3);
-    border-radius:8px;padding:.45rem .8rem;color:#e0f0ff;font-family:'Rajdhani',sans-serif;
-    font-size:.95rem;outline:none;width:200px;
+  .name-input-wrap{display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;flex-shrink:0;}
+  .name-input-wrap input{
+    background:rgba(255,255,255,.06);border:1px solid rgba(0,255,204,.3);border-radius:8px;
+    padding:.45rem .85rem;color:#e0f0ff;font-family:'Orbitron',monospace;font-size:.75rem;
+    letter-spacing:.08em;outline:none;width:180px;text-transform:uppercase;
   }
-  #playerNameInput:focus{border-color:var(--accent);box-shadow:0 0 12px rgba(0,255,204,.25);}
+  .name-input-wrap input:focus{border-color:rgba(0,255,204,.6);}
+  .name-input-wrap label{font-size:.65rem;color:#7ab0d0;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;}
 
-  .server-row{display:flex;align-items:center;gap:.5rem;margin-bottom:.8rem;flex-shrink:0;flex-wrap:wrap;justify-content:center;}
-  .server-row label{font-family:'Orbitron',monospace;font-size:.55rem;letter-spacing:.12em;color:#7ab0d0;}
-  #serverInput{
-    background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);
-    border-radius:6px;padding:.35rem .65rem;color:#aabbcc;font-family:'Rajdhani',sans-serif;
-    font-size:.75rem;outline:none;width:340px;
+  #online-badge{
+    display:inline-flex;align-items:center;gap:.45rem;margin-bottom:.7rem;
+    background:rgba(0,255,100,.08);border:1px solid rgba(0,255,100,.25);border-radius:50px;
+    padding:.28rem .75rem;font-size:.65rem;color:#44ff88;letter-spacing:.12em;font-family:'Orbitron',monospace;
+    flex-shrink:0;
   }
-  #serverInput:focus{border-color:rgba(0,255,204,.4);}
-  .status-dot{width:9px;height:9px;border-radius:50%;background:#555;flex-shrink:0;transition:background .3s;}
-  .status-dot.green{background:#00ffcc;box-shadow:0 0 8px #00ffcc;}
-  .status-dot.red{background:#ff4444;box-shadow:0 0 8px #ff4444;}
-  .status-dot.yellow{background:#ffdd00;box-shadow:0 0 8px #ffdd00;}
-  #connStatus{font-size:.65rem;color:#556677;}
+  .online-dot{width:7px;height:7px;border-radius:50%;background:#44ff88;animation:dotPulse 1.4s ease-in-out infinite;}
+  @keyframes dotPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
 
-  #cat-grid{
-    width:100%;max-width:1150px;
-    display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));
-    gap:.65rem;margin-bottom:1rem;
-  }
+  #cat-grid{width:100%;max-width:1150px;display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:.65rem;margin-bottom:1rem;}
   .cat-block{background:rgba(255,255,255,.04);border:1px solid rgba(0,255,204,.16);border-radius:10px;padding:.55rem .65rem;}
   .cat-title{font-family:'Orbitron',monospace;font-size:.52rem;font-weight:700;letter-spacing:.14em;color:var(--accent);text-transform:uppercase;margin-bottom:.4rem;border-bottom:1px solid rgba(0,255,204,.15);padding-bottom:.28rem;}
   .cat-animals{display:flex;flex-wrap:wrap;gap:.28rem;}
@@ -72,7 +64,6 @@
 
   #startBtn{font-family:'Orbitron',monospace;font-size:1rem;font-weight:700;letter-spacing:.2em;padding:.85rem 2.8rem;background:linear-gradient(135deg,#00ffcc,#0099ff);color:#050a14;border:none;border-radius:50px;cursor:pointer;text-transform:uppercase;transition:all .2s;box-shadow:0 0 30px rgba(0,255,204,.4);flex-shrink:0;}
   #startBtn:hover{transform:scale(1.06);box-shadow:0 0 55px rgba(0,255,204,.75);}
-  #startBtn:disabled{opacity:.5;cursor:not-allowed;transform:none;}
   .hint{margin-top:.85rem;font-size:.73rem;color:#445566;letter-spacing:.05em;text-align:center;line-height:1.7;flex-shrink:0;}
   .hint strong{color:#7ab0d0;}
 
@@ -92,7 +83,6 @@
   #energy-bar{height:100%;background:linear-gradient(90deg,#ff9900,#ffdd00);border-radius:50px;transition:width .1s;box-shadow:0 0 8px rgba(255,153,0,.5);}
   #level-badge{font-family:'Orbitron',monospace;font-size:.62rem;font-weight:900;background:rgba(0,255,204,.12);border:1px solid rgba(0,255,204,.35);border-radius:5px;padding:3px 7px;color:var(--accent);white-space:nowrap;flex-shrink:0;}
   #score-display{font-family:'Orbitron',monospace;font-size:.72rem;color:var(--gold);white-space:nowrap;flex-shrink:0;}
-  #online-badge{font-family:'Orbitron',monospace;font-size:.52rem;background:rgba(0,255,100,.12);border:1px solid rgba(0,255,100,.3);border-radius:5px;padding:3px 7px;color:#00ff88;white-space:nowrap;flex-shrink:0;}
 
   #evo-flash{position:fixed;inset:0;background:rgba(0,255,204,.13);display:none;pointer-events:none;z-index:50;}
   #evo-text{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Orbitron',monospace;font-size:clamp(1.4rem,5vw,2.8rem);font-weight:900;color:#fff;text-shadow:0 0 40px var(--accent);display:none;z-index:51;text-align:center;pointer-events:none;}
@@ -110,51 +100,43 @@
 
   #minimap{position:fixed;bottom:14px;right:14px;width:120px;height:120px;background:rgba(5,9,20,.82);border:1px solid rgba(0,255,204,.22);border-radius:8px;display:none;z-index:10;overflow:hidden;}
   #minimap canvas{width:100%;height:100%;}
-  #leaderboard{position:fixed;top:72px;right:14px;width:160px;background:var(--ui-bg);border:1px solid rgba(0,255,204,.14);border-radius:8px;padding:9px;display:none;z-index:10;}
+  #leaderboard{position:fixed;top:72px;right:14px;width:170px;background:var(--ui-bg);border:1px solid rgba(0,255,204,.14);border-radius:8px;padding:9px;display:none;z-index:10;}
   #leaderboard h3{font-family:'Orbitron',monospace;font-size:.52rem;letter-spacing:.2em;color:var(--accent);margin-bottom:7px;text-transform:uppercase;}
   .lb-entry{display:flex;align-items:center;gap:5px;font-size:.73rem;margin-bottom:4px;color:#7ab0d0;overflow:hidden;}
   .lb-entry.you{color:var(--accent);font-weight:600;}
   .lb-entry.real-player{color:#ffdd88;}
-  .lb-entry .lb-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:68px;}
+  .lb-entry .lb-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:78px;}
   .lb-entry .lb-score{margin-left:auto;font-family:'Orbitron',monospace;font-size:.6rem;flex-shrink:0;}
   #dash-bar-wrap{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);display:none;z-index:10;align-items:center;gap:8px;background:rgba(5,9,20,.82);padding:6px 14px;border-radius:50px;border:1px solid rgba(255,153,0,.3);}
   #dash-bar-label{font-family:'Orbitron',monospace;font-size:.57rem;color:var(--energy);}
   #dash-bar-track{width:150px;height:10px;background:rgba(255,255,255,.08);border-radius:50px;overflow:hidden;}
   #dash-bar-fill{height:100%;background:linear-gradient(90deg,#ff9900,#ffdd00);border-radius:50px;transition:width .08s;}
-
-  /* Ping indicator */
-  #ping-display{position:fixed;bottom:143px;right:14px;font-family:'Orbitron',monospace;font-size:.52rem;color:#445566;display:none;z-index:10;}
+  #online-count{position:fixed;top:72px;left:14px;background:rgba(5,9,20,.82);border:1px solid rgba(0,255,100,.2);border-radius:8px;padding:5px 10px;font-family:'Orbitron',monospace;font-size:.55rem;color:#44ff88;letter-spacing:.1em;display:none;z-index:10;}
+  .kill-banner{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Orbitron',monospace;font-size:1.1rem;font-weight:900;color:#ff6644;text-shadow:0 0 20px #ff4400;pointer-events:none;z-index:60;text-align:center;animation:killFade 2s ease-out forwards;}
+  @keyframes killFade{0%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-70%) scale(0.8)}}
 </style>
 </head>
 <body>
 
-<div id="startScreen">
+<!-- ══════════ START SCREEN ══════════ -->
+<div id="startScreen"
   <h1>EVOQUEST</h1>
   <p class="sub">Eat · Evolve · Dominate</p>
-
-  <div class="name-row">
-    <label>YOUR NAME</label>
-    <input id="playerNameInput" type="text" maxlength="18" placeholder="Enter your name..." autocomplete="off" />
+  <div id="online-badge"><div class="online-dot"></div><span id="online-badge-text">CONNECTING...</span></div>
+  <div class="name-input-wrap">
+    <label>Your name:</label>
+    <input id="playerNameInput" type="text" maxlength="16" placeholder="ENTER NAME" autocomplete="off"/>
   </div>
-
-  <div class="server-row">
-    <label>SERVER</label>
-    <input id="serverInput" type="text" value="" placeholder="wss://your-partykit-server.partykit.dev/parties/main/evoquest" />
-    <div class="status-dot" id="connDot"></div>
-    <span id="connStatus">not connected</span>
-  </div>
-
   <div class="legend">
-    <div class="leg"><div class="leg-dot leg-prey"></div><span style="color:#3ddc64">Your prey &mdash; you can eat these</span></div>
-    <div class="leg"><div class="leg-dot leg-pred"></div><span style="color:#ff5555">Your predators &mdash; avoid these</span></div>
-    <div class="leg"><div class="leg-dot" style="border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.06);"></div><span style="color:#7ab0d0">Same tier &mdash; neither can eat the other</span></div>
+    <div class="leg"><div class="leg-dot leg-prey"></div><span style="color:#3ddc64">Your prey — you can eat these</span></div>
+    <div class="leg"><div class="leg-dot leg-pred"></div><span style="color:#ff5555">Your predators — avoid these</span></div>
+    <div class="leg"><div class="leg-dot" style="border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.06);"></div><span style="color:#7ab0d0">Same tier — neither can eat the other</span></div>
   </div>
   <div id="cat-grid"></div>
   <button id="startBtn">BEGIN EVOLUTION</button>
   <p class="hint">
     Mouse / WASD / Arrow Keys to move &nbsp;·&nbsp; Kill = +25% prey XP &nbsp;·&nbsp; Die = respawn 75% XP<br>
-    Hold <strong>SPACE</strong> or <strong>Left-Click</strong> to dash (uses ⚡ energy) &nbsp;·&nbsp; Same tier = cannot eat each other<br>
-    <strong style="color:#ffdd88">👥 Real players shown in gold on leaderboard</strong> &nbsp;·&nbsp; Server required for multiplayer (bots fill in when offline)
+    Hold <strong>SPACE</strong> or <strong>Left-Click</strong> to dash (uses ⚡ energy) &nbsp;·&nbsp; <span style="color:#ffdd88">🌐 Real players shown with gold name</span>
   </p>
 </div>
 
@@ -178,7 +160,6 @@
   </div>
   <div id="level-badge">LV 1/100</div>
   <div id="score-display">0 PTS</div>
-  <div id="online-badge" style="display:none">● ONLINE</div>
 </div>
 
 <div id="dash-bar-wrap">
@@ -186,11 +167,11 @@
   <div id="dash-bar-track"><div id="dash-bar-fill" style="width:100%"></div></div>
 </div>
 
+<div id="online-count">🌐 <span id="online-num">0</span> ONLINE</div>
 <div id="minimap"><canvas id="minimapCanvas" width="120" height="120"></canvas></div>
 <div id="leaderboard"><h3>🏆 Top Predators</h3><div id="lb-entries"></div></div>
 <div id="evo-flash"></div>
 <div id="evo-text"></div>
-<div id="ping-display"></div>
 
 <div id="respawnScreen">
   <div class="big-emoji" id="rs-emoji">⚛️</div>
@@ -203,11 +184,109 @@
 
 <canvas id="gameCanvas"></canvas>
 
+<!-- Firebase SDK -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getDatabase, ref, set, onValue, off, remove, onDisconnect, serverTimestamp, get } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+window._fb = { initializeApp, getDatabase, ref, set, onValue, off, remove, onDisconnect, serverTimestamp, get };
+window._fbReady = true;
+window.dispatchEvent(new Event('fbReady'));
+</script>
+
 <script>
+// ════════════════════════════════════════════════════════
+//  ⚙️  CREATOR CONFIG — paste your Firebase URL here once
+//  Get it from: Firebase Console → your project →
+//  Realtime Database → copy the URL shown at the top
+//  Example: "https://my-game-default-rtdb.firebaseio.com"
+// ════════════════════════════════════════════════════════
+const FIREBASE_URL = "https://evoquest-8c6db-default-rtdb.firebaseio.com";
+
+// ════════════════════════════════════════════════════════
+//  FIREBASE MULTIPLAYER LAYER
+// ════════════════════════════════════════════════════════
+let fbApp=null, fbDb=null, myPlayerId=null, playersRef=null, myRef=null;
+let remotePlayers={};
+let fbConnected=false;
+const isSoloMode = !FIREBASE_URL || FIREBASE_URL === "YOUR_FIREBASE_URL_HERE";
+
+function genId(){return Math.random().toString(36).substr(2,9)+'_'+Date.now().toString(36);}
+
+async function initFirebase(){
+  if(isSoloMode){
+    document.getElementById('online-badge-text').textContent='SOLO MODE — BOTS ONLY';
+    return;
+  }
+  try{
+    if(!window._fbReady) await new Promise(r=>window.addEventListener('fbReady',r,{once:true}));
+    const {initializeApp,getDatabase}=window._fb;
+    fbApp=initializeApp({databaseURL:FIREBASE_URL},'evoquest');
+    fbDb=getDatabase(fbApp);
+    fbConnected=true;
+    startWatchingPlayers();
+  }catch(e){
+    console.warn('Firebase failed, running solo:',e.message);
+    document.getElementById('online-badge-text').textContent='OFFLINE — BOTS ONLY';
+  }
+}
+
+function startWatchingPlayers(){
+  if(!fbDb)return;
+  const {ref,onValue}=window._fb;
+  playersRef=ref(fbDb,'players');
+  onValue(playersRef,snap=>{
+    const data=snap.val()||{};
+    const now=Date.now();
+    remotePlayers={};
+    Object.entries(data).forEach(([id,p])=>{
+      if(id===myPlayerId)return;
+      if(!p||!p.alive)return;
+      if(now-p.ts>8000)return;
+      remotePlayers[id]=p;
+    });
+    const count=Object.keys(remotePlayers).length+(myPlayerId?1:0);
+    document.getElementById('online-num').textContent=count;
+    document.getElementById('online-badge-text').textContent=count+' PLAYER'+(count!==1?'S':'')+' ONLINE';
+  });
+}
+
+let lastPushTime=0;
+function pushPlayerState(){
+  if(!fbDb||!myRef||!player||!player.alive)return;
+  const now=Date.now();
+  if(now-lastPushTime<66)return;
+  lastPushTime=now;
+  const {set}=window._fb;
+  set(myRef,{
+    x:Math.round(player.x),y:Math.round(player.y),
+    level:player.level,name:playerName,wobble:player.wobble,
+    alive:true,score:Math.floor(score),totalXp:Math.floor(player.totalXp),ts:Date.now()
+  });
+}
+
+function registerPlayer(){
+  if(!fbDb)return;
+  const {ref,set,remove,onDisconnect}=window._fb;
+  myPlayerId=genId();
+  myRef=ref(fbDb,'players/'+myPlayerId);
+  onDisconnect(myRef).remove();
+}
+
+function unregisterPlayer(){
+  if(!myRef)return;
+  const {remove}=window._fb;
+  remove(myRef);
+  myRef=null;
+}
+
+// Boot Firebase in background immediately — players never see a setup screen
+initFirebase();
+
 // ════════════════════════════════════════════════════════
 //  EVOLUTION CHAIN — 100 stages
 // ════════════════════════════════════════════════════════
-const CREATURES = [
+const CREATURES=[
   {name:'Atom',emoji:'⚛️',size:8,speed:1.8,xpNeeded:120,color:'#88ffee',tier:'Microscopic'},
   {name:'Virus',emoji:'🦠',size:9,speed:1.9,xpNeeded:180,color:'#55ffcc',tier:'Microscopic'},
   {name:'Bacteria',emoji:'🔬',size:10,speed:2.0,xpNeeded:270,color:'#44ffaa',tier:'Microscopic'},
@@ -317,165 +396,12 @@ function canEat(lvA,lvB){
 }
 
 // ════════════════════════════════════════════════════════
-//  MULTIPLAYER MANAGER
-// ════════════════════════════════════════════════════════
-const Multi = (() => {
-  let ws = null;
-  let myId = null;
-  let connected = false;
-  let remotePlayers = {}; // id -> {x,y,level,name,score,lastSeen}
-  let pingStart = 0;
-  let ping = 0;
-  let onConnectCb = null;
-  let onDisconnectCb = null;
-  let onKillCb = null;
-  let onDeathCb = null;
-
-  function genId() {
-    return Math.random().toString(36).slice(2,10);
-  }
-  myId = genId();
-
-  function connect(url, playerName) {
-    if(ws) { ws.close(); ws = null; }
-    setStatus('yellow','connecting...');
-    try {
-      ws = new WebSocket(url);
-    } catch(e) {
-      setStatus('red','invalid url');
-      return;
-    }
-    ws.onopen = () => {
-      connected = true;
-      setStatus('green', 'online');
-      document.getElementById('online-badge').style.display = 'block';
-      ws.send(JSON.stringify({type:'join', id:myId, name:playerName}));
-      if(onConnectCb) onConnectCb();
-      // ping loop
-      setInterval(() => {
-        if(ws && ws.readyState===1) { pingStart=performance.now(); ws.send(JSON.stringify({type:'ping'})); }
-      }, 3000);
-    };
-    ws.onmessage = (e) => {
-      try {
-        const msg = JSON.parse(e.data);
-        handleMsg(msg);
-      } catch(_){}
-    };
-    ws.onclose = () => {
-      connected = false;
-      setStatus('red','disconnected');
-      document.getElementById('online-badge').style.display = 'none';
-      ws = null;
-      if(onDisconnectCb) onDisconnectCb();
-      // reconnect after 3s
-      setTimeout(() => {
-        const url2 = document.getElementById('serverInput').value.trim();
-        const name2 = document.getElementById('playerNameInput').value.trim() || 'Player';
-        if(url2) connect(url2, name2);
-      }, 3000);
-    };
-    ws.onerror = () => { setStatus('red','error'); };
-  }
-
-  function handleMsg(msg) {
-    if(msg.type === 'pong') {
-      ping = Math.round(performance.now() - pingStart);
-      const pd = document.getElementById('ping-display');
-      if(pd) { pd.textContent = ping + 'ms'; pd.style.color = ping<80?'#00ffcc':ping<150?'#ffdd00':'#ff4444'; }
-      return;
-    }
-    if(msg.type === 'state') {
-      // Full state broadcast from server: list of all players
-      const fresh = {};
-      (msg.players||[]).forEach(p => {
-        if(p.id === myId) return; // skip self
-        fresh[p.id] = { ...p, lastSeen: Date.now() };
-      });
-      remotePlayers = fresh;
-      return;
-    }
-    if(msg.type === 'player_update') {
-      if(msg.id === myId) return;
-      remotePlayers[msg.id] = { ...msg, lastSeen: Date.now() };
-      return;
-    }
-    if(msg.type === 'player_left') {
-      delete remotePlayers[msg.id];
-      return;
-    }
-    if(msg.type === 'kill_event') {
-      // server says killerId ate victimId
-      if(msg.victimId === myId && onDeathCb) onDeathCb(msg.killerId, msg.killerName);
-      if(msg.killerId === myId && onKillCb) onKillCb(msg.victimId, msg.victimXp||0);
-      return;
-    }
-  }
-
-  function sendUpdate(player, score) {
-    if(!ws || ws.readyState !== 1) return;
-    ws.send(JSON.stringify({
-      type:'player_update',
-      id:myId,
-      x:Math.round(player.x),
-      y:Math.round(player.y),
-      level:player.level,
-      totalXp:player.totalXp,
-      score:Math.floor(score),
-      name:player.name,
-      alive:player.alive,
-    }));
-  }
-
-  function sendKill(victimId) {
-    if(!ws || ws.readyState !== 1) return;
-    ws.send(JSON.stringify({type:'kill',id:myId,victimId}));
-  }
-
-  function sendDeath(killerId) {
-    if(!ws || ws.readyState !== 1) return;
-    ws.send(JSON.stringify({type:'death',id:myId,killerId}));
-  }
-
-  function disconnect() {
-    if(ws) { ws.close(); ws = null; }
-    connected = false;
-    remotePlayers = {};
-    setStatus('', 'not connected');
-  }
-
-  function setStatus(color, text) {
-    const dot = document.getElementById('connDot');
-    const st = document.getElementById('connStatus');
-    if(dot) { dot.className='status-dot'; if(color) dot.classList.add(color); }
-    if(st) st.textContent = text;
-  }
-
-  function pruneStale() {
-    const now = Date.now();
-    Object.keys(remotePlayers).forEach(id => {
-      if(now - remotePlayers[id].lastSeen > 8000) delete remotePlayers[id];
-    });
-  }
-
-  return {
-    get connected(){ return connected; },
-    get remotePlayers(){ return remotePlayers; },
-    get myId(){ return myId; },
-    connect, disconnect, sendUpdate, sendKill, sendDeath, pruneStale,
-    on(ev,cb){ if(ev==='connect') onConnectCb=cb; if(ev==='disconnect') onDisconnectCb=cb; if(ev==='kill') onKillCb=cb; if(ev==='death') onDeathCb=cb; }
-  };
-})();
-
-// ════════════════════════════════════════════════════════
 //  START SCREEN
 // ════════════════════════════════════════════════════════
 function buildStartScreen(){
-  const byTier={};
-  TIER_ORDER.forEach(t=>(byTier[t]=[]));
+  const byTier={};TIER_ORDER.forEach(t=>(byTier[t]=[]));
   CREATURES.forEach((c,i)=>byTier[c.tier].push({...c,idx:i}));
-  const grid=document.getElementById('cat-grid');
-  grid.innerHTML='';
+  const grid=document.getElementById('cat-grid');grid.innerHTML='';
   TIER_ORDER.forEach(tier=>{
     const animals=byTier[tier];if(!animals.length)return;
     const block=document.createElement('div');block.className='cat-block';
@@ -495,9 +421,9 @@ function refreshStartHighlights(playerLevel){
   document.querySelectorAll('.ca').forEach(el=>{
     const idx=parseInt(el.dataset.idx);
     el.classList.remove('is-prey','is-pred','is-same');
-    if(CREATURES[idx].tier===myTier) el.classList.add('is-same');
-    else if(canEat(playerLevel,idx)) el.classList.add('is-prey');
-    else if(canEat(idx,playerLevel)) el.classList.add('is-pred');
+    if(CREATURES[idx].tier===myTier)el.classList.add('is-same');
+    else if(canEat(playerLevel,idx))el.classList.add('is-prey');
+    else if(canEat(idx,playerLevel))el.classList.add('is-pred');
   });
 }
 
@@ -513,24 +439,14 @@ let camera={x:0,y:0};
 let player,foods,bots,particles,score,gameRunning,frameCount;
 let mouseX=window.innerWidth/2,mouseY=window.innerHeight/2;
 let savedScore=0,dashHeld=false;
+let playerName='PLAYER';
 
 // ════════════════════════════════════════════════════════
-//  BOT FACTORY (reduced count since real players fill in)
+//  BOT FACTORY
 // ════════════════════════════════════════════════════════
-const ALL_BOT_NAMES=['NomNom','SkullEater','GulpMax','EvoKing','ByteChomper','TideRider','VoidJaw','PlanktonPro','DeepDiver','SkyHunter','DinoBoss','MegaFang','StormBeak','AbyssWalker','PredatorX','WildClaw','ThunderFin','GhostWing','IronMaw','ShadowFang','NightStalker','BloodTide','ChaosEater','VenomClaw','PixelDevour','OmegaBite','HexHunter','RiftWalker','StarEater','NullFang','DarkTide','AcidMaw','FrostClaw','BoneCrusher','ToxicFin','LavaBeast'];
+const ALL_BOT_NAMES=['NomNom','SkullEater','GulpMax','EvoKing','ByteChomper','TideRider','VoidJaw','PlanktonPro','DeepDiver','SkyHunter','DinoBoss','MegaFang','StormBeak','AbyssWalker','PredatorX','WildClaw','ThunderFin','GhostWing','IronMaw','ShadowFang','NightStalker','BloodTide','ChaosEater','VenomClaw','PixelDevour','OmegaBite','HexHunter','RiftWalker','StarEater','NullFang','DarkTide','AcidMaw','FrostClaw','BoneCrusher','ToxicFin','LavaBeast','CrimsonWing','NeonStalker','VoidDrifter','EclipseHunter'];
 let usedBotNames=new Set();
-function getUniqueBotName(){
-  const avail=ALL_BOT_NAMES.filter(n=>!usedBotNames.has(n));
-  const pool=avail.length?avail:ALL_BOT_NAMES;
-  if(!avail.length)usedBotNames.clear();
-  const name=pool[Math.floor(Math.random()*pool.length)];
-  usedBotNames.add(name);return name;
-}
-function targetBotCount() {
-  // Fewer bots when more real players online
-  const realCount = Object.keys(Multi.remotePlayers).length;
-  return Math.max(10, 30 - realCount * 3);
-}
+function getUniqueBotName(){const avail=ALL_BOT_NAMES.filter(n=>!usedBotNames.has(n));const pool=avail.length?avail:ALL_BOT_NAMES;if(!avail.length)usedBotNames.clear();const name=pool[Math.floor(Math.random()*pool.length)];usedBotNames.add(name);return name;}
 function mkBot(forceLv){
   const maxLv=player?Math.min(player.level+5,CREATURES.length-1):CREATURES.length-1;
   const lv=forceLv!==undefined?forceLv:Math.floor(Math.random()*(maxLv+1));
@@ -549,7 +465,6 @@ function initGame(preserveXp){
   usedBotNames.clear();
   const startTotalXp=preserveXp&&player?Math.floor(player.totalXp*0.75):0;
   const startLv=levelFromTotalXp(startTotalXp);
-  const playerName = document.getElementById('playerNameInput').value.trim() || 'Player';
   player={
     x:WORLD.w/2+(Math.random()-.5)*400,y:WORLD.h/2+(Math.random()-.5)*400,
     level:startLv,totalXp:startTotalXp,
@@ -558,22 +473,20 @@ function initGame(preserveXp){
     speed(){return CREATURES[this.level].speed;},
     creature(){return CREATURES[this.level];},
     alive:true,invincible:3.5,wobble:0,angle:0,energy:100,maxEnergy:100,
-    name:playerName,
   };
   foods=[];bots=[];particles=[];
   score=preserveXp?savedScore:0;
   gameRunning=true;frameCount=0;
   spawnFoods(1000);
-  const botCount = targetBotCount();
-  for(let i=0;i<botCount;i++)bots.push(mkBot());
+  for(let i=0;i<30;i++)bots.push(mkBot()); // fewer bots when real players present
   document.getElementById('hud').style.display='flex';
   document.getElementById('minimap').style.display='block';
   document.getElementById('leaderboard').style.display='block';
   document.getElementById('dash-bar-wrap').style.display='flex';
-  document.getElementById('ping-display').style.display='block';
+  document.getElementById('online-count').style.display='block';
   document.getElementById('respawnScreen').style.display='none';
-  if(Multi.connected) document.getElementById('online-badge').style.display='block';
   lastHudLevel=-1;updateHUD();
+  if(!isSoloMode)registerPlayer();
 }
 
 // ════════════════════════════════════════════════════════
@@ -588,6 +501,7 @@ function spawnFoods(n){for(let i=0;i<n;i++)foods.push(mkFood());}
 // ════════════════════════════════════════════════════════
 function burst(x,y,color,n){const max=Math.min(n,11);for(let i=0;i<max;i++){const a=Math.random()*Math.PI*2,sp=1.5+Math.random()*3.5;particles.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,r:2+Math.random()*3.5,color,life:1,decay:.026+Math.random()*.02});}}
 function xpPopup(wx,wy,text){const el=document.createElement('div');el.className='xp-popup';el.textContent=text;el.style.left=(wx-camera.x)+'px';el.style.top=(wy-camera.y-30)+'px';document.body.appendChild(el);setTimeout(()=>el.remove(),1300);}
+function killBanner(text){const el=document.createElement('div');el.className='kill-banner';el.innerHTML=text;document.body.appendChild(el);setTimeout(()=>el.remove(),2000);}
 
 // ════════════════════════════════════════════════════════
 //  EVOLUTION / HUD
@@ -600,7 +514,8 @@ function checkEvolve(){
 }
 function triggerEvoFX(){
   const fl=document.getElementById('evo-flash');fl.style.display='block';fl.style.animation='none';void fl.offsetWidth;fl.style.animation='flashAnim .8s ease-out forwards';setTimeout(()=>fl.style.display='none',800);
-  const et=document.getElementById('evo-text');const c=CREATURES[player.level];et.innerHTML=`EVOLVED!<br/>${c.emoji} ${c.name.toUpperCase()}`;et.style.display='block';et.style.animation='none';void et.offsetWidth;et.style.animation='evoAnim 2s ease-out forwards';setTimeout(()=>et.style.display='none',2000);
+  const et=document.getElementById('evo-text');const c=CREATURES[player.level];
+  et.innerHTML=`EVOLVED!<br/>${c.emoji} ${c.name.toUpperCase()}`;et.style.display='block';et.style.animation='none';void et.offsetWidth;et.style.animation='evoAnim 2s ease-out forwards';setTimeout(()=>et.style.display='none',2000);
 }
 let lastHudLevel=-1;
 function updateHUD(){
@@ -622,19 +537,18 @@ function updateHUD(){
 }
 
 // ════════════════════════════════════════════════════════
-//  LEADERBOARD (includes real players)
+//  LEADERBOARD (real players gold, bots dimmed)
 // ════════════════════════════════════════════════════════
 function updateLeaderboard(){
-  const list=[
-    ...bots.filter(b=>b.alive).map(b=>({name:b.name,emoji:CREATURES[b.level].emoji,score:Math.floor(b.score),you:false,real:false})),
-    // Remote real players
-    ...Object.values(Multi.remotePlayers).map(p=>({name:p.name||'???',emoji:CREATURES[Math.min(p.level||0,CREATURES.length-1)].emoji,score:p.score||0,you:false,real:true})),
-    {name:player.name||'YOU',emoji:player.creature().emoji,score:Math.floor(score),you:true,real:true}
-  ];
+  const list=[];
+  // Real remote players
+  Object.values(remotePlayers).forEach(rp=>{list.push({name:rp.name,emoji:CREATURES[Math.min(rp.level,CREATURES.length-1)].emoji,score:rp.score||0,you:false,real:true});});
+  // Bots
+  bots.filter(b=>b.alive).forEach(b=>{list.push({name:b.name,emoji:CREATURES[b.level].emoji,score:Math.floor(b.score),you:false,real:false});});
+  // Me
+  list.push({name:playerName||'YOU',emoji:player.creature().emoji,score:Math.floor(score),you:true,real:true});
   list.sort((a,b)=>b.score-a.score);
-  document.getElementById('lb-entries').innerHTML=list.slice(0,8).map(e=>
-    `<div class="lb-entry ${e.you?'you':e.real?'real-player':''}"><span>${e.emoji}</span><span class="lb-name">${e.you?'YOU':e.name}</span><span class="lb-score">${e.score}</span></div>`
-  ).join('');
+  document.getElementById('lb-entries').innerHTML=list.slice(0,8).map(e=>`<div class="lb-entry ${e.you?'you':e.real?'real-player':''}"><span>${e.emoji}</span><span class="lb-name">${e.you?'★ '+e.name:e.name}</span><span class="lb-score">${e.score}</span></div>`).join('');
 }
 
 // ════════════════════════════════════════════════════════
@@ -643,20 +557,19 @@ function updateLeaderboard(){
 function botThink(bot,dt){
   bot.decisionTimer-=dt;bot.stuckTimer+=dt;
   if(bot.stuckTimer>2){if(Math.hypot(bot.x-bot.lastX,bot.y-bot.lastY)<15){bot.targetX=clamp(bot.x+(Math.random()-.5)*700,50,WORLD.w-50);bot.targetY=clamp(bot.y+(Math.random()-.5)*700,50,WORLD.h-50);bot.state='wander';}bot.lastX=bot.x;bot.lastY=bot.y;bot.stuckTimer=0;}
-  if(bot.decisionTimer>0)return;
-  bot.decisionTimer=0.25+Math.random()*0.35;
-  const mySize=CREATURES[bot.level].size,fleeR=mySize*9,huntR=mySize*(9+bot.aggression*7);
+  if(bot.decisionTimer>0)return;bot.decisionTimer=0.25+Math.random()*0.35;
+  const mySize=CREATURES[bot.level].size;const fleeR=mySize*9;const huntR=mySize*(9+bot.aggression*7);
   let closestThreat=null,closestThreatD=Infinity;
   const checkThreat=(ox,oy,olv)=>{if(olv<=bot.level)return;const d=Math.hypot(bot.x-ox,bot.y-oy);if(d<fleeR&&d<closestThreatD){closestThreatD=d;closestThreat={x:ox,y:oy};}};
   bots.forEach(b=>{if(b.alive&&b!==bot)checkThreat(b.x,b.y,b.level);});
   if(player.alive)checkThreat(player.x,player.y,player.level);
-  // Check remote players too
-  Object.values(Multi.remotePlayers).forEach(p=>{ if(p.alive!==false) checkThreat(p.x,p.y,Math.min(p.level||0,CREATURES.length-1)); });
+  Object.values(remotePlayers).forEach(rp=>checkThreat(rp.x,rp.y,rp.level||0));
   if(closestThreat&&(bot.caution>0.4||closestThreatD<mySize*5)){bot.state='flee';const fx=bot.x-closestThreat.x,fy=bot.y-closestThreat.y,fd=Math.hypot(fx,fy)+.01;bot.targetX=clamp(bot.x+(fx/fd)*550,50,WORLD.w-50);bot.targetY=clamp(bot.y+(fy/fd)*550,50,WORLD.h-50);return;}
   let bestPrey=null,bestPreyVal=-1;
   const evalPrey=(ox,oy,olv,otx)=>{if(olv>=bot.level)return;const d=Math.hypot(bot.x-ox,bot.y-oy);if(d>huntR)return;const val=(otx*0.25)/(d+1)*(1+bot.aggression);if(val>bestPreyVal){bestPreyVal=val;bestPrey={x:ox,y:oy};}};
   bots.forEach(b=>{if(b.alive&&b!==bot)evalPrey(b.x,b.y,b.level,b.totalXp);});
   if(player.alive)evalPrey(player.x,player.y,player.level,player.totalXp);
+  Object.values(remotePlayers).forEach(rp=>evalPrey(rp.x,rp.y,rp.level||0,rp.totalXp||0));
   if(bestPrey&&(bot.aggression>0.4||bestPreyVal>40)){bot.state='hunt';bot.targetX=bestPrey.x;bot.targetY=bestPrey.y;return;}
   let bestFood=null,bestFoodVal=-1;const forageR=400+bot.aggression*350;
   foods.forEach(f=>{const d=Math.hypot(bot.x-f.x,bot.y-f.y);if(d>forageR)return;const v=f.xp/(d+1);if(v>bestFoodVal){bestFoodVal=v;bestFood=f;}});
@@ -672,29 +585,19 @@ function botMove(bot,dt){
 // ════════════════════════════════════════════════════════
 //  UPDATE
 // ════════════════════════════════════════════════════════
-let sendTimer = 0;
 function update(dt){
   const isDashing=dashHeld&&player.energy>0;
   const spd=player.speed()*(isDashing?1.85:1.0);
   let moved=false;
   let kx=0,ky=0;
-  if(keys['KeyW']||keys['ArrowUp'])ky-=1;
-  if(keys['KeyS']||keys['ArrowDown'])ky+=1;
-  if(keys['KeyA']||keys['ArrowLeft'])kx-=1;
-  if(keys['KeyD']||keys['ArrowRight'])kx+=1;
+  if(keys['KeyW']||keys['ArrowUp'])ky-=1;if(keys['KeyS']||keys['ArrowDown'])ky+=1;
+  if(keys['KeyA']||keys['ArrowLeft'])kx-=1;if(keys['KeyD']||keys['ArrowRight'])kx+=1;
   if(kx!==0||ky!==0){const klen=Math.hypot(kx,ky)||1;const kstep=spd*60*dt;player.x=clamp(player.x+(kx/klen)*kstep,0,WORLD.w);player.y=clamp(player.y+(ky/klen)*kstep,0,WORLD.h);player.angle=Math.atan2(ky,kx);moved=true;}
   if(!moved){const dx=mouseX-canvas.width/2,dy=mouseY-canvas.height/2,md=Math.hypot(dx,dy);if(md>8){const sp=spd*(40+Math.min(md,230))/230*60*dt;player.x=clamp(player.x+(dx/md)*sp,0,WORLD.w);player.y=clamp(player.y+(dy/md)*sp,0,WORLD.h);player.angle=Math.atan2(dy,dx);moved=true;}}
   if(isDashing&&moved)player.energy=Math.max(0,player.energy-38*dt);
   else player.energy=Math.min(player.maxEnergy,player.energy+8*dt);
   player.wobble+=dt*3;if(player.invincible>0)player.invincible-=dt;
   camera.x=player.x-canvas.width/2;camera.y=player.y-canvas.height/2;
-
-  // Send position to server
-  sendTimer+=dt;
-  if(sendTimer>0.05){ sendTimer=0; Multi.sendUpdate(player,score); }
-
-  // Prune stale remote players
-  if(frameCount%60===0) Multi.pruneStale();
 
   const pS=player.size();
   for(let i=0;i<foods.length;i++){
@@ -704,8 +607,34 @@ function update(dt){
   }
   if(frameCount%8===0&&foods.length<700)spawnFoods(Math.min(20,700-foods.length));
 
-  // Bots
-  for(let i=bots.length-1;i>=0;i--){
+  // ── Interact with REAL remote players ──
+  if(player.alive&&player.invincible<=0){
+    const pSafe=player.size()*.88;
+    Object.entries(remotePlayers).forEach(([id,rp])=>{
+      const rlv=Math.min(rp.level||0,CREATURES.length-1);
+      const bSafe=CREATURES[rlv].size*.88;
+      const cdx=player.x-rp.x,cdy=player.y-rp.y;
+      if(cdx*cdx+cdy*cdy<(pSafe+bSafe)*(pSafe+bSafe)){
+        if(canEat(player.level,rlv)){
+          // We eat them — award XP locally (they handle their own death)
+          const loot=Math.floor((rp.totalXp||0)*.25);
+          player.totalXp+=loot;score+=loot+25;
+          burst(rp.x,rp.y,CREATURES[rlv].color,14);
+          xpPopup(rp.x,rp.y,`+${loot} XP`);
+          killBanner(`🍴 YOU ATE ${rp.name}!`);
+          checkEvolve();
+          // Temporarily remove from local view (they'll respawn)
+          delete remotePlayers[id];
+        } else if(canEat(rlv,player.level)){
+          burst(player.x,player.y,player.creature().color,20);
+          savedScore=score;player.alive=false;gameRunning=false;
+          setTimeout(showRespawnScreen,900);
+        }
+      }
+    });
+  }
+
+  for(let i=0;i<bots.length;i++){
     const bot=bots[i];if(!bot.alive)continue;
     botThink(bot,dt);botMove(bot,dt);bot.score+=dt*1.8;
     if(frameCount%3===i%3){
@@ -717,59 +646,33 @@ function update(dt){
       if(!canEat(bot.level,other.level)&&!canEat(other.level,bot.level))continue;
       const edx=bot.x-other.x,edy=bot.y-other.y,bsA=CREATURES[bot.level].size*.88,bsB=CREATURES[other.level].size*.88;
       if(edx*edx+edy*edy<(bsA+bsB)*(bsA+bsB)){
-        if(canEat(bot.level,other.level)){const loot=Math.floor(other.totalXp*.25);bot.totalXp+=loot;bot.score+=loot*.4;burst(other.x,other.y,CREATURES[other.level].color,8);usedBotNames.delete(other.name);other.alive=false;while(bot.level<CREATURES.length-1&&bot.totalXp>=CUM_XP[bot.level+1])bot.level++;setTimeout(()=>{if(gameRunning&&bots.filter(b=>b.alive).length<targetBotCount())bots.push(mkBot());},4500);}
-        else if(canEat(other.level,bot.level)){const loot=Math.floor(bot.totalXp*.25);other.totalXp+=loot;other.score+=loot*.4;burst(bot.x,bot.y,CREATURES[bot.level].color,8);usedBotNames.delete(bot.name);bot.alive=false;while(other.level<CREATURES.length-1&&other.totalXp>=CUM_XP[other.level+1])other.level++;setTimeout(()=>{if(gameRunning&&bots.filter(b=>b.alive).length<targetBotCount())bots.push(mkBot());},4500);}
+        if(canEat(bot.level,other.level)){const loot=Math.floor(other.totalXp*.25);bot.totalXp+=loot;bot.score+=loot*.4;burst(other.x,other.y,CREATURES[other.level].color,8);usedBotNames.delete(other.name);other.alive=false;while(bot.level<CREATURES.length-1&&bot.totalXp>=CUM_XP[bot.level+1])bot.level++;setTimeout(()=>{if(gameRunning)bots.push(mkBot());},4500);}
+        else if(canEat(other.level,bot.level)){const loot=Math.floor(bot.totalXp*.25);other.totalXp+=loot;other.score+=loot*.4;burst(bot.x,bot.y,CREATURES[bot.level].color,8);usedBotNames.delete(bot.name);bot.alive=false;while(other.level<CREATURES.length-1&&other.totalXp>=CUM_XP[other.level+1])other.level++;setTimeout(()=>{if(gameRunning)bots.push(mkBot());},4500);}
       }
     }
   }
-
-  // Player vs bots
   if(player.alive&&player.invincible<=0){
     const pSafe=player.size()*.88;
     for(let i=bots.length-1;i>=0;i--){
       const bot=bots[i];if(!bot.alive)continue;
       const bSafe=CREATURES[bot.level].size*.88,cdx=player.x-bot.x,cdy=player.y-bot.y;
       if(cdx*cdx+cdy*cdy<(pSafe+bSafe)*(pSafe+bSafe)){
-        if(canEat(player.level,bot.level)){const loot=Math.floor(bot.totalXp*.25);player.totalXp+=loot;score+=loot+25;player.energy=Math.min(player.maxEnergy,player.energy+loot*0.04);burst(bot.x,bot.y,CREATURES[bot.level].color,12);xpPopup(bot.x,bot.y,`+${loot} XP`);usedBotNames.delete(bot.name);bot.alive=false;checkEvolve();setTimeout(()=>{if(gameRunning&&bots.filter(b=>b.alive).length<targetBotCount())bots.push(mkBot());},4500);}
-        else if(canEat(bot.level,player.level)){burst(player.x,player.y,player.creature().color,20);savedScore=score;player.alive=false;gameRunning=false;Multi.sendDeath('bot');setTimeout(showRespawnScreen,900);}
+        if(canEat(player.level,bot.level)){const loot=Math.floor(bot.totalXp*.25);player.totalXp+=loot;score+=loot+25;player.energy=Math.min(player.maxEnergy,player.energy+loot*0.04);burst(bot.x,bot.y,CREATURES[bot.level].color,12);xpPopup(bot.x,bot.y,`+${loot} XP`);usedBotNames.delete(bot.name);bot.alive=false;checkEvolve();setTimeout(()=>{if(gameRunning)bots.push(mkBot());},4500);}
+        else if(canEat(bot.level,player.level)){burst(player.x,player.y,player.creature().color,20);savedScore=score;player.alive=false;gameRunning=false;setTimeout(showRespawnScreen,900);}
       }
     }
   }
-
-  // Player vs remote real players (client-side prediction — higher level eats lower)
-  if(player.alive&&player.invincible<=0){
-    const pSafe=player.size()*.88;
-    Object.entries(Multi.remotePlayers).forEach(([rid,rp])=>{
-      if(rp.alive===false)return;
-      const rLv=Math.min(rp.level||0,CREATURES.length-1);
-      const rSafe=CREATURES[rLv].size*.88;
-      const cdx=player.x-(rp.x||0),cdy=player.y-(rp.y||0);
-      if(cdx*cdx+cdy*cdy<(pSafe+rSafe)*(pSafe+rSafe)){
-        if(canEat(player.level,rLv)){
-          // We eat them — notify server
-          const loot=Math.floor((rp.totalXp||0)*.25);
-          player.totalXp+=loot;score+=loot+25;
-          player.energy=Math.min(player.maxEnergy,player.energy+loot*0.04);
-          burst(rp.x,rp.y,CREATURES[rLv].color,12);
-          xpPopup(rp.x,rp.y,`+${loot} XP`);
-          checkEvolve();
-          Multi.sendKill(rid);
-          delete Multi.remotePlayers[rid];
-        } else if(canEat(rLv,player.level)){
-          // They eat us
-          burst(player.x,player.y,player.creature().color,20);
-          savedScore=score;player.alive=false;gameRunning=false;
-          Multi.sendDeath(rid);
-          setTimeout(showRespawnScreen,900);
-        }
-      }
-    });
-  }
-
   for(let i=particles.length-1;i>=0;i--){const p=particles[i];p.x+=p.vx;p.y+=p.vy;p.vy+=.04;p.life-=p.decay;if(p.life<=0)particles.splice(i,1);}
-  if(bots.filter(b=>b.alive).length<targetBotCount())bots.push(mkBot());
+
+  // Maintain bot count dynamically (more bots if few real players)
+  const realCount=Object.keys(remotePlayers).length;
+  const targetBots=Math.max(15,40-realCount*5);
+  if(bots.filter(b=>b.alive).length<targetBots)bots.push(mkBot());
+
   if(frameCount%90===0)updateLeaderboard();
   if(frameCount%4===0)updateHUD();
+  // Push state to Firebase every ~3 frames
+  if(frameCount%3===0)pushPlayerState();
   frameCount++;
 }
 
@@ -785,13 +688,11 @@ function render(){
   const vp={x0:camera.x-90,y0:camera.y-90,x1:camera.x+canvas.width+90,y1:camera.y+canvas.height+90};
   for(let i=0;i<foods.length;i++){const f=foods[i];if(f.x<vp.x0||f.x>vp.x1||f.y<vp.y0||f.y>vp.y1)continue;const p=1+Math.sin(f.pulse)*.13;ctx.save();ctx.translate(f.x,f.y);ctx.scale(p,p);ctx.fillStyle=f.color+'88';ctx.beginPath();ctx.arc(0,0,f.r,0,Math.PI*2);ctx.fill();ctx.restore();}
   for(let i=0;i<bots.length;i++){const b=bots[i];if(!b.alive||b.x<vp.x0||b.x>vp.x1||b.y<vp.y0||b.y>vp.y1)continue;drawC(b,CREATURES[b.level],false,false);}
-  // Draw remote real players
-  Object.values(Multi.remotePlayers).forEach(rp=>{
-    if(rp.alive===false)return;
-    const rLv=Math.min(rp.level||0,CREATURES.length-1);
-    if(rp.x===undefined)return;
+  // Draw real remote players (with gold highlight)
+  Object.values(remotePlayers).forEach(rp=>{
     if(rp.x<vp.x0||rp.x>vp.x1||rp.y<vp.y0||rp.y>vp.y1)return;
-    drawRemotePlayer(rp,rLv);
+    const rlv=Math.min(rp.level||0,CREATURES.length-1);
+    drawC({x:rp.x,y:rp.y,wobble:rp.wobble||0,level:rlv,name:rp.name},CREATURES[rlv],false,true);
   });
   if(player.alive)drawC(player,player.creature(),true,false);
   for(let i=0;i<particles.length;i++){const p=particles[i];ctx.globalAlpha=p.life;ctx.fillStyle=p.color;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();}
@@ -799,68 +700,47 @@ function render(){
   drawMinimap();
 }
 
-function drawRemotePlayer(rp, rLv) {
-  const cData = CREATURES[rLv];
-  const {x,y} = rp;
-  const size = cData.size;
-  ctx.save();ctx.translate(x,y);
-  // Gold glow for real players
-  ctx.shadowColor='#ffdd88';ctx.shadowBlur=22;
-  ctx.fillStyle=cData.color+'1e';ctx.beginPath();ctx.arc(0,0,size*1.15,0,Math.PI*2);ctx.fill();
-  ctx.fillStyle=cData.color+'50';ctx.beginPath();ctx.arc(0,0,size*.93,0,Math.PI*2);ctx.fill();
-  ctx.shadowBlur=0;
-  ctx.font=`${size*1.5}px serif`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(cData.emoji,0,0);
-
-  // Prey/pred ring
-  const isPrey=canEat(player.level,rLv);const isPred=canEat(rLv,player.level);
-  if(isPrey||isPred){
-    ctx.shadowBlur=isPrey?12:16;ctx.shadowColor=isPrey?'rgba(50,220,90,0.9)':'rgba(255,60,60,0.9)';
-    ctx.strokeStyle=isPrey?'rgba(50,220,90,0.85)':'rgba(255,60,60,0.85)';ctx.lineWidth=isPrey?2.5:3;
-    ctx.setLineDash(isPrey?[4,3]:[6,3]);ctx.beginPath();ctx.arc(0,0,size+8,0,Math.PI*2);ctx.stroke();ctx.shadowBlur=0;
-  }
-  ctx.restore();
-
-  // Name + REAL badge
-  ctx.save();
-  const ny=y-size-9;
-  const label = '👤 '+(rp.name||'???');
-  ctx.font='bold 10px Rajdhani,sans-serif';ctx.textAlign='center';
-  const tw=ctx.measureText(label).width;
-  ctx.fillStyle='rgba(0,0,0,.7)';ctx.fillRect(x-tw/2-4,ny-11,tw+8,14);
-  ctx.fillStyle='#ffdd88';ctx.shadowColor='#000';ctx.shadowBlur=3;
-  ctx.fillText(label,x,ny);
-  ctx.restore();
-}
-
-function drawC(entity,cData,isPlayer){
+function drawC(entity,cData,isPlayer,isRealPlayer){
   const{x,y,wobble}=entity,size=cData.size,wa=Math.sin(wobble)*.07;
   ctx.save();ctx.translate(x,y);
-  ctx.shadowColor=isPlayer?'#00ffcc':cData.color;ctx.shadowBlur=isPlayer?20:8;
+  ctx.shadowColor=isPlayer?'#00ffcc':isRealPlayer?'#ffdd44':cData.color;ctx.shadowBlur=isPlayer?20:isRealPlayer?18:8;
   ctx.save();ctx.scale(1+wa,1-wa*.5);
   ctx.fillStyle=cData.color+'1e';ctx.beginPath();ctx.arc(0,0,size*1.15,0,Math.PI*2);ctx.fill();
   ctx.fillStyle=cData.color+'50';ctx.beginPath();ctx.arc(0,0,size*.93,0,Math.PI*2);ctx.fill();
   ctx.restore();ctx.shadowBlur=0;
   ctx.font=`${size*1.5}px serif`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(cData.emoji,0,0);
   ctx.restore();
-  if(!isPlayer&&player&&player.alive){
+
+  if(isRealPlayer){
+    // Gold ring for real players
+    ctx.save();ctx.translate(x,y);
+    ctx.shadowBlur=14;ctx.shadowColor='rgba(255,220,60,0.8)';
+    ctx.strokeStyle='rgba(255,220,60,0.75)';ctx.lineWidth=2.5;ctx.setLineDash([5,3]);ctx.lineDashOffset=-(wobble||0)*4;
+    ctx.beginPath();ctx.arc(0,0,size+9,0,Math.PI*2);ctx.stroke();ctx.shadowBlur=0;ctx.restore();
+  } else if(!isPlayer&&player&&player.alive){
     const botLv=entity.level;const isPrey=canEat(player.level,botLv);const isPred=canEat(botLv,player.level);
     if(isPrey||isPred){ctx.save();ctx.translate(x,y);ctx.shadowBlur=isPrey?12:16;ctx.shadowColor=isPrey?'rgba(50,220,90,0.9)':'rgba(255,60,60,0.9)';ctx.strokeStyle=isPrey?'rgba(50,220,90,0.85)':'rgba(255,60,60,0.85)';ctx.lineWidth=isPrey?2.5:3;ctx.setLineDash(isPrey?[4,3]:[6,3]);ctx.lineDashOffset=-wobble*4;ctx.beginPath();ctx.arc(0,0,size+8,0,Math.PI*2);ctx.stroke();ctx.shadowBlur=0;ctx.restore();}
   }
-  if(!isPlayer){ctx.save();ctx.font='600 10px Rajdhani,sans-serif';ctx.textAlign='center';const ny=y-size-9,tw=ctx.measureText(entity.name).width;ctx.fillStyle='rgba(0,0,0,.55)';ctx.fillRect(x-tw/2-3,ny-10,tw+6,13);ctx.fillStyle='#cde';ctx.shadowColor='#000';ctx.shadowBlur=3;ctx.fillText(entity.name,x,ny);ctx.restore();}
-  if(isPlayer){ctx.save();ctx.translate(x,y);ctx.strokeStyle=dashHeld&&player.energy>0?'rgba(255,153,0,.8)':'rgba(0,255,204,.45)';ctx.lineWidth=2;ctx.setLineDash([5,4]);ctx.lineDashOffset=-entity.wobble*5;ctx.beginPath();ctx.arc(0,0,size+11,0,Math.PI*2);ctx.stroke();ctx.restore();}
-}
 
+  if(!isPlayer){
+    ctx.save();ctx.font='600 10px Rajdhani,sans-serif';ctx.textAlign='center';
+    const ny=y-size-9,tw=ctx.measureText(entity.name).width;
+    ctx.fillStyle='rgba(0,0,0,.55)';ctx.fillRect(x-tw/2-3,ny-10,tw+6,13);
+    ctx.fillStyle=isRealPlayer?'#ffdd88':'#cde';ctx.shadowColor='#000';ctx.shadowBlur=3;
+    ctx.fillText(entity.name,x,ny);ctx.restore();
+  }
+  if(isPlayer){
+    ctx.save();ctx.translate(x,y);ctx.strokeStyle=dashHeld&&player.energy>0?'rgba(255,153,0,.8)':'rgba(0,255,204,.45)';ctx.lineWidth=2;ctx.setLineDash([5,4]);ctx.lineDashOffset=-entity.wobble*5;ctx.beginPath();ctx.arc(0,0,size+11,0,Math.PI*2);ctx.stroke();ctx.restore();
+  }
+}
 function drawMinimap(){
   if(!player)return;
   mmCtx.clearRect(0,0,120,120);mmCtx.fillStyle='#07101f';mmCtx.fillRect(0,0,120,120);
   const sx=120/WORLD.w,sy=120/WORLD.h;
   mmCtx.fillStyle='#00ffcc15';for(let i=0;i<foods.length;i+=3)mmCtx.fillRect(foods[i].x*sx-1,foods[i].y*sy-1,2,2);
   for(let i=0;i<bots.length;i++){const b=bots[i];if(!b.alive)continue;mmCtx.fillStyle=CREATURES[b.level].color+'99';const bs=Math.max(1.5,CREATURES[b.level].size/28);mmCtx.beginPath();mmCtx.arc(b.x*sx,b.y*sy,bs,0,Math.PI*2);mmCtx.fill();}
-  // Real players — gold dots
-  Object.values(Multi.remotePlayers).forEach(rp=>{
-    if(rp.x===undefined)return;
-    mmCtx.fillStyle='#ffdd88';mmCtx.beginPath();mmCtx.arc(rp.x*sx,rp.y*sy,3,0,Math.PI*2);mmCtx.fill();
-  });
+  // Real players on minimap (gold dots)
+  Object.values(remotePlayers).forEach(rp=>{mmCtx.fillStyle='#ffdd6699';mmCtx.beginPath();mmCtx.arc(rp.x*sx,rp.y*sy,3,0,Math.PI*2);mmCtx.fill();});
   mmCtx.fillStyle='#fff';mmCtx.shadowColor='#00ffcc';mmCtx.shadowBlur=7;mmCtx.beginPath();mmCtx.arc(player.x*sx,player.y*sy,3.5,0,Math.PI*2);mmCtx.fill();mmCtx.shadowBlur=0;
   mmCtx.strokeStyle='rgba(0,255,204,.35)';mmCtx.lineWidth=1;mmCtx.strokeRect(camera.x*sx,camera.y*sy,canvas.width*sx,canvas.height*sy);
 }
@@ -873,7 +753,8 @@ function showRespawnScreen(){
   document.getElementById('rs-name').textContent=player.creature().name;
   document.getElementById('rs-score-msg').textContent='Score: '+Math.floor(savedScore);
   document.getElementById('respawnScreen').style.display='flex';
-  ['hud','minimap','leaderboard','dash-bar-wrap','ping-display'].forEach(id=>document.getElementById(id).style.display='none');
+  ['hud','minimap','leaderboard','dash-bar-wrap','online-count'].forEach(id=>document.getElementById(id).style.display='none');
+  unregisterPlayer();
 }
 
 // ════════════════════════════════════════════════════════
@@ -895,21 +776,15 @@ canvas.addEventListener('touchend',e=>{if(e.touches.length<2)dashHeld=false;});
 window.addEventListener('keydown',e=>{keys[e.code]=true;if(e.code==='Space'){e.preventDefault();dashHeld=true;}if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code))e.preventDefault();});
 window.addEventListener('keyup',e=>{keys[e.code]=false;if(e.code==='Space')dashHeld=false;});
 window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
+window.addEventListener('beforeunload',()=>{unregisterPlayer();});
 
 // ════════════════════════════════════════════════════════
 //  BOOT
 // ════════════════════════════════════════════════════════
 buildStartScreen();
-
-// Try connecting to server when URL is entered
-document.getElementById('serverInput').addEventListener('change',()=>{
-  const url=document.getElementById('serverInput').value.trim();
-  const name=document.getElementById('playerNameInput').value.trim()||'Player';
-  if(url) Multi.connect(url,name);
-  else Multi.disconnect();
-});
-
 document.getElementById('startBtn').addEventListener('click',()=>{
+  const nameInput=document.getElementById('playerNameInput').value.trim().toUpperCase();
+  playerName=nameInput||'PLAYER'+(Math.floor(Math.random()*9000)+1000);
   document.getElementById('startScreen').style.display='none';
   initGame(false);requestAnimationFrame(loop);
 });
